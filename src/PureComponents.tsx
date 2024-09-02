@@ -22,16 +22,16 @@ const max = Math.max(1, 2, 3, 4, 5);
 // In here if we use React.memo, it will prevent the re-rendering of the component if the props are the same.
 // If the props are different, the component will re-render.
 // So that makes the component a pure component because it only depends on the props.
-export const MyPureComponent = React.memo<{ readonly id: string }>(
-    function MyPureComponent({ id }) {
-        console.log("Rendering MyPureComponent");
-        return <Text>Pure Component Count: ${id}</Text>;
+export const LionPureComponent = React.memo<{ readonly lionCount: number }>(
+    function MyPureComponent({ lionCount }) {
+        console.log("Rendering Lions(Pure)", lionCount);
+        return <Text>-Pure-Lions: {lionCount}</Text>;
     }
 );
 
-export const RegularComponent = ({ id }: { readonly id: string }) => {
-    console.log("Rendering RegularComponent");
-    return <Text>Render Id: ${id}</Text>;
+export const RabbitComponentNoMemo = ({ count }: { readonly count: number }) => {
+    console.log("Rendering Rabbit:", count);
+    return <Text>-Impure-Rabits: {count}</Text>;
 };
 
 // Pure component with fnd
@@ -58,7 +58,7 @@ export const MyPureComponentWithFnc = React.memo<{
     );
 });
 
-// Impure function 
+// Impure function
 // An impure function is a function that has side effects.
 // Biggest problem with impure functions is that they are not predictable. and they are not testable.
 const impureSum2Numbers = (a: number, b: number) => {
@@ -170,7 +170,7 @@ export const AgeComponent = React.memo<AgeProps>(({ age, name, dispatch }) => {
 })
 
 // in zustland, we have actions and setState
-// as you can we are fetching data from the server, calling other actions, or doing some side effects. 
+// as you can we are fetching data from the server, calling other actions, or doing some side effects.
 
 // but setState is a pure function, it only depends on the state and the action.
 // it takes state as an argument and returns a new state.
