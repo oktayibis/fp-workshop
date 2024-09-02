@@ -1,4 +1,13 @@
 {
   "name": "fp-workshop",
-  "slug": "fp-workshop"
+  "slug": "fp-workshop",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "4b768776-7251-4598-97fb-9e3a22c0f3c6"
+      }
+    },
+    "owner": "oktayibis",
+    "slug": "fp-programming"
+  }
 }

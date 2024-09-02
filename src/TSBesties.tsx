@@ -6,7 +6,7 @@ import React from "react";
 import { View, Text, Button, Pressable } from "react-native";
 
 function uppercase(text: any): string {
-    // conver it to correct type
+    // convert it to correct type
     return text.toUpperCase();
 }
 
@@ -449,3 +449,5 @@ const showError = (error: Error, config: Partial<YourConfig> = defaultConfig) =>
 }
 
 showError(new Error('Something went wrong'));
+
+
