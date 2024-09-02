@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, View, Text, GestureResponderEvent } from 'react-native';
+import {Button, View, Text, GestureResponderEvent, FlatList} from 'react-native';
 
 const ONE = 1;
 
@@ -46,9 +46,9 @@ const newItemAdded = (state: typeof initialState, newItem: number) => { // Pure 
 // Mutable Component
 
 // Presentational Component
-// Fxe Desgin library usually use Immutable and Pure component
+// Fxe Design library usually use Immutable and Pure component
 
-// Why readonly
+// Why readonly?
 export const Immutable: React.FC<{ count: number, readonly setCount: (val) => void }> = (props) => {
     props.count = 10; // Run another component and observe change the value
 
@@ -64,18 +64,20 @@ export const Immutable: React.FC<{ count: number, readonly setCount: (val) => vo
 }
 
 const Mutable = () => {
-    const [count, setCount] = useState(0);
+    const [list, setList] = useState(['Hello', 'World']);
 
     const increment = () => {
-        setCount(count + 1);
+       // setList(list.push(ONE));
+        list.push('World');
     };
 
     return (
-        <div>
-            <h1>Mutable Component</h1>
-            <p>Count: {count}</p>
-            <button onClick={increment}>Increment</button>
-        </div>
+        <View>
+            <Text style={{color: 'red', padding:20}}>Mutable Component</Text>
+
+           <FlatList data={list} renderItem={({item}) => <Text style={{color: 'black'}}>* {item}</Text>} keyExtractor={(item, index) => index.toString()} />
+            <Button title='Add More' onPress={increment} />
+        </View>
     );
 };
 

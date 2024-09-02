@@ -5,9 +5,11 @@ import {
     ImpureComponentWithStateManagement, LionPureComponent,
     RabbitComponentNoMemo,
 } from "./PureComponents";
-import { Immutable } from "./Mutable";
+import Mutable, { Immutable } from "./Mutable";
 import MyScreen from "./HighOrder";
 import { AccountScreen } from "./TSBesties";
+import RecursiveCommentThread from "./Recursion";
+import DeclarativeTaskManager from "./DeclarativeCode";
 
 const MainApp = React.memo(function MainApp() {
     const [rabbit, setRabbit] = React.useState(0);
@@ -30,6 +32,9 @@ const MainApp = React.memo(function MainApp() {
         const onAddLion = React.useCallback(() => {
             setLion((prev) => prev + 1);
     }, [])
+
+    // fn reference : 901391lk213kjl123
+
     return (
         <View style={styles.container}>
             <Text>MainApp</Text>
@@ -39,15 +44,18 @@ const MainApp = React.memo(function MainApp() {
             {/* <ImpureComponentWithStateManagement /> */}
             {/* <Immutable count={id} setCount={setId} /> */}
 
-            <View style={styles.lionContainer}>
-                <LionPureComponent lionCount={lion} />
-            </View>
-            <View style={styles.rabbitContainer}>
-                <RabbitComponentNoMemo count={rabbit} />
+            {/*<Mutable />*/}
+            {/*<View style={styles.lionContainer}>*/}
+            {/*    <LionPureComponent lionCount={lion} />*/}
+            {/*</View>*/}
+            {/*<View style={styles.rabbitContainer}>*/}
+            {/*    <RabbitComponentNoMemo count={rabbit} />*/}
 
-            </View>
-             <ButtonWrapper variant='dark' title='Add Rabbit' onPress={onAddRabbit} />
-             <ButtonWrapper variant='light' title='Add Lion' onPress={onAddLion} />
+            {/*</View>*/}
+            {/* <ButtonWrapper variant='dark' title='Add Rabbit' onPress={onAddRabbit} />*/}
+            {/* <ButtonWrapper variant='light' title='Add Lion' onPress={onAddLion} />*/}
+            {/*<RecursiveCommentThread />*/}
+            <DeclarativeTaskManager />
         </View>
     );
 });
@@ -78,6 +86,8 @@ const ButtonWrapper = React.memo<{readonly title:string,readonly onPress: () => 
 
     return <Button title={title} onPress={onPress} color={variant === 'dark' ? 'black' : 'blue'} />;
 })
+
+
 
 
 

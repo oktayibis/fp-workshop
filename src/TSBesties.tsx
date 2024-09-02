@@ -1,5 +1,5 @@
 // We generally avoid using any because it defeats the purpose of using TypeScript.
-// any essentially turns off type checking for that variable, 
+// any essentially turns off type checking for that variable,
 // making it behave like regular JavaScript and losing the benefits of TypeScript's static typing.
 
 import React from "react";
@@ -323,7 +323,7 @@ interface Circle {
 type Shape = Square | Circle;
 
 function getArea(shape: Shape): number {
-    switch (shape.type) { // for avodding swtich case for all, we use the Unions lib. 
+    switch (shape.type) { // for avodding swtich case for all, we use the Unions lib.
         case 'square':
             return shape.size ** 2;
         case 'circle':
@@ -341,10 +341,6 @@ getArea(circle); // returns 78.54
 
 
 // Conclusion
-// TypeScript is a powerful tool for creating type-safe JavaScript code.
-// It provides static type checking, which helps catch errors at compile time.
-// It also offers advanced features like generics, conditional types, and mapped types, which allow you to create more flexible and reusable code.
-// By using TypeScript, you can write safer and more maintainable code, leading to fewer bugs and better developer productivity.
 
 // React
 
@@ -375,7 +371,7 @@ const AccountName: React.FC<{ name: string, onPress: () => void }> = React.memo(
     return <Pressable onPress={onPress} style={{ padding: 10, borderWidth: 2 }}><Text>{name}</Text></Pressable>
 })
 
-// Note: Explain different usecases for the memo and callback here. 
+// Note: Explain different usecases for the memo and callback here.
 const AccountItem: React.FC<{ account: Account }> = React.memo(({ account }) => {
 
     const onPress = React.useCallback(() => {

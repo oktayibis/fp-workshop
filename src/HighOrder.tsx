@@ -95,6 +95,9 @@ const doubledNumbers = numbers.map((num) => num * 2);
 
 // let's write own map function
 
+
+
+ // --------------------- Compose function --------------------- //
 // Compose function
 
 // This is quite common in functional programming to compose functions.
@@ -114,8 +117,7 @@ addOneAndMultiplyByThree(3);
 
 const getRequest = async (url: string): Promise<Response> => {
     try {
-        const response = await fetch(url);
-        return response;
+       return fetch(url);
     } catch (error) {
         console.log(error);
     }
@@ -157,7 +159,7 @@ const accountValidator = {
     }),
 };
 
-const getAccountList = asyncPipe(getRequest, toJson, accountValidator.parse);
+const getAccountList = asyncPipe(fetch, toJson, accountValidator.parse);
 
 // const response = getAccountList('https://jsonplaceholder.typicode.com/todos/1')
 
@@ -192,7 +194,7 @@ function withLoading<P extends object>(
 ): React.FC<P & WithLoadingProps> {
     return ({ isLoading, ...props }: WithLoadingProps & P) => {
         if (isLoading) {
-            
+
             return (
                 <View style={{ justifyContent: "center", alignItems: "center" }}>
                     <Text style={{ color: "red" }}>Loading...</Text>

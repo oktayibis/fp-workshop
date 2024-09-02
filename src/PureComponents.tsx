@@ -24,6 +24,7 @@ const max = Math.max(1, 2, 3, 4, 5);
 // So that makes the component a pure component because it only depends on the props.
 export const LionPureComponent = React.memo<{ readonly lionCount: number }>(
     function MyPureComponent({ lionCount }) {
+
         console.log("Rendering Lions(Pure)", lionCount);
         return <Text>-Pure-Lions: {lionCount}</Text>;
     }
